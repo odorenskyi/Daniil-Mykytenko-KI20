@@ -48,6 +48,30 @@ char inputB()
 	return b;
 }
 
+void booleanExpression(char a, char b)
+{
+	bool expression = a + 1 < b;
+	string expressionResult;
+	if (expression == true)
+		expressionResult = "вірним";
+	else
+		expressionResult = "хибним";
+	cout << endl << expression << endl << "Вираз \"a + 1 < b\" є " << boolalpha << expressionResult << endl << endl;
+}
+
+void hexDecTransfer(double x, double y, double z)
+{
+	cout << "X, Y та Z в десятковій системі числення:" << endl;
+	cout << "X = " << x << endl;
+	cout << "Y = " << y << endl;
+	cout << "Z = " << z << endl << endl;
+
+	cout << "В шістнадцятковій системі: " << endl;
+	cout << "X = " << hex << x << endl;
+	cout << "Y = " << hex << y << endl;
+	cout << "Z = " << hex << z << endl << endl;
+}
+
 int main()
 {
 	localisation();
@@ -62,19 +86,10 @@ int main()
 	b = inputB();
 
 	// second demand
-	bool expression = a + 1 < b;
-	cout << endl << "Expression \"a + 1 < b\" is " << boolalpha << expression << endl << endl;
+	booleanExpression(a, b);
 
 	// third demand
-	cout << "X, Y and Z in decimal form is:" << endl;
-	cout << "X = " << x << endl;
-	cout << "Y = " << y << endl;
-	cout << "Z = " << z << endl << endl;
-
-	cout << "In hexadecimal form is: " << endl; 
-	cout << "X = " << hex << x << endl;
-	cout << "Y = " << hex << y << endl;
-	cout << "Z = " << hex << z << endl << endl;
+	hexDecTransfer(x, y, z);
 
 	double s = s_calculation(x, y, z);
 	cout << "S = " << s << endl;

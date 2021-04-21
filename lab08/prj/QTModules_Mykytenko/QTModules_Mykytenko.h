@@ -18,6 +18,11 @@ void AR()
 
 double s_calculation(double y, double z)
 {
+    while(z < 0)
+    {
+        std::cout << "Помилка: неправильно введене число Z." << std::endl << "Введ?ть Z: " << std::endl;
+        std::cin >> z;
+    }
     double s = pow(z + y + z, 2) - 2 * 3.141592653589793 * sqrt(1 / 3 * z);
     return s;
 }

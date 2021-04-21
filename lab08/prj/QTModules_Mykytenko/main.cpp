@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include "QTModules_Mykytenko.h"
+#include <map>
+#include <list>
 
 using namespace std;
 
@@ -54,24 +56,51 @@ void booleanExpression(char a, char b)
     cout << endl << expression << endl << "Вираз \"a + 1 < b\" є " << boolalpha << expressionResult << endl << endl;
 }
 
-void hexDecTransfer(double x, double y, double z)
+void decForm(double x, double y, double z)
 {
     cout << "X, Y та Z в десятковiй системi числення:" << endl;
     cout << "X = " << x << endl;
     cout << "Y = " << y << endl;
     cout << "Z = " << z << endl << endl;
-
-    cout << "В шiстнадцятковiй системi: " << endl;
-    cout << "X = " << hex << x << endl;
-    cout << "Y = " << hex << y << endl;
-    cout << "Z = " << hex << z << endl << endl;
 }
+
+void hexConverter(int number)
+{
+    list<int> numberK;
+
+    std::string numberKStr;
+    std::map< int, char > numberDic;
+    for ( char i = '0'; i <= '9'; ++i )
+    {
+        numberDic[ i - '0' ] = i;
+    }
+    for ( char i = 'A'; i <= 'Z'; ++i )
+    {
+        numberDic[ i - 'A' + 10 ] = i;
+    }
+    int k = 16;
+    long hexNumber = number;
+    while ( true )
+    {
+        numberK.push_front( hexNumber % k );
+        if ( hexNumber < k )
+            break;
+        hexNumber /= k;
+    }
+    for ( list<int>::iterator i = numberK.begin(); i != numberK.end(); ++i )
+    {
+        numberKStr += numberDic[ *i ];
+    }
+
+    std::cout << number <<" у шiстнадцятковiй системi: " << numberKStr << std::endl;
+}
+
+
 
 int main()
 {
     localisation();
     AR(); // first demand
-
 
     double x, y, z;
     char a, b;
@@ -81,14 +110,19 @@ int main()
     a = inputA();
     b = inputB();
 
+    //s_calculation result
+    double S = s_calculation(y, z);
+    cout << "S = " << S << endl;
+
     // second demand
     booleanExpression(a, b);
 
     // third demand
-    hexDecTransfer(x, y, z);
-
-    double s = s_calculation(y, z);
-    cout << "S = " << s << endl;
+    decForm(x, y, z);
+    hexConverter(x);
+    hexConverter(y);
+    hexConverter(z);
+    cout << endl;
 
     system("pause");
 }

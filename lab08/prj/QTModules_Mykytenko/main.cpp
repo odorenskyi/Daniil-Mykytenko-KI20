@@ -26,6 +26,11 @@ double inputZ()
     double z;
     cout << "Введiть Z: " << endl;
     cin >> z;
+    while(z < 0)
+    {
+        std::cout << "Помилка: неправильно введене число Z." << std::endl << "Введiть Z: " << std::endl;
+        std::cin >> z;
+    }
     return z;
 }
 

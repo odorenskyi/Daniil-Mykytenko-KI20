@@ -141,9 +141,9 @@ int sizeInput()
     return size;
 }
 
-int binaryNumber(int num)
+int binaryNumber(long long num)
 {
-    int t=0, d = 1;
+    long long t=0, d = 1;
     while(num)
     {
         t += (num % 2)* d;
@@ -153,9 +153,9 @@ int binaryNumber(int num)
     return t;
 }
 
-int binaryLength(int num)
+int binaryLength(long long num)
 {
-    int t=0, d = 1, length = 0;
+    long long t=0, d = 1, length = 0;
     while(num)
     {
         t += (num % 2)* d;
@@ -168,10 +168,15 @@ int binaryLength(int num)
 
 void bitCalculator()
 {
-    int number;
+    long long number;
     cout << "Введiть натуральне число вiд 0 до 80000: " << endl;
     cin >> number;
-    int binNumber = binaryNumber(number);
+    while(number < 0 || number > 80000)
+    {
+        cout << "Помилка: число не належить заданому пром?жку." << endl << "Введiть натуральне число вiд 0 до 80000: " << endl;
+        cin >> number;
+    }
+    long long binNumber = binaryNumber(number);
     int length = binaryLength(number);
 
     int arr[length];

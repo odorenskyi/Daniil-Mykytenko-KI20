@@ -18,7 +18,6 @@ void localisation()
 void AR()
 {
     cout << "Daniyl Mykytenko, KI-20 student. CNTU 2021 (c)" << std::endl;
-
     Beep(247, 500);
     Beep(417, 500);
     Beep(417, 500);
@@ -50,15 +49,15 @@ void AR()
     Beep(329, 500);
 }
 
-double s_calculation(double y, double z)
+void s_calculation(double y, double z)
 {
     double s = pow(z + y + z, 2) - 2 * 3.141592653589793 * sqrt(1 / 3 * z);
-    return s;
+    cout << s;
 }
 
 double inputY()
 {
-    int y;
+    double y;
     cout << "Введiть Y: ";
     cin >> y;
     return y;
@@ -66,7 +65,7 @@ double inputY()
 
 double inputZ()
 {
-    int z;
+    double z;
     cout << "Введiть Z: ";
     cin >> z;
     return z;
@@ -128,17 +127,33 @@ void mensUnderwear(int size)
             index = i;
     }
 
-    cout << "В системi Францiї ваш розмiр: " << frSize[index] << endl;
+    if(frSize[index] == 0)
+        cout << "В системi Францiї такого розмiру не iснує." << endl;
+    else
+        cout << "В системi Францiї ваш розмiр: " << frSize[index] << endl;
     cout << "В системi Великобританiї ваш розмiр: " << gbSize[index] << endl;
     cout << "В мiжнароднiй системi ваш розмiр: " << internationalSize[index] << endl;
 }
 
 int sizeInput()
 {
+    int uaSize[6] = {44, 46, 48, 50, 52, 54};
     int size;
     cout << "Введiть розмiр за українською системою: ";
     cin >> size;
-    return size;
+    int inputSize = size;
+    bool a = false;
+    for(int i = 0; i != 6; i++)
+    {
+        if(inputSize == uaSize[i])
+            a = true;
+    }
+    if(a == false)
+    {
+        cout << "Такого розмiру не iснує." << endl;
+        sizeInput();
+    }
+    return inputSize;
 }
 
 int binaryNumber(long long num)
@@ -192,8 +207,8 @@ void bitCalculator()
             falseSum++;
         binNumber /= 10;
     }
-    cout << "П'ятий бiт числа є " << arr[length - 4] << endl;
-    if(arr[length-4] == 1)
+    cout << "П'ятий бiт числа є " << arr[length-5] << endl;
+    if(arr[length-5] == 1)
         cout << "Кiлькiсть одиниць в числi: " << trueSum << endl;
     else
         cout << "Кiлькiсть нулiв в числi: " << falseSum << endl;

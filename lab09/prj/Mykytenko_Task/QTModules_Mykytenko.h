@@ -156,16 +156,18 @@ int sizeInput()
     return inputSize;
 }
 
-int binaryNumber(long long num)
+string binaryNumber(long long num)
 {
+    string concatenance = "";
+    int k = 0;
     long long t=0, d = 1;
     while(num)
     {
-        t += (num % 2)* d;
-        num = num/2;
-        d = d*10;
+        k = num % 2;
+        num = num / 2;
+        concatenance = to_string(k) + concatenance;
     }
-    return t;
+    return concatenance;
 }
 
 int binaryLength(long long num)
@@ -191,24 +193,19 @@ void bitCalculator()
         cout << "Помилка: число не належить заданому пром?жку." << endl << "Введiть натуральне число вiд 0 до 80000: " << endl;
         cin >> number;
     }
-    long long binNumber = binaryNumber(number);
-    int length = binaryLength(number);
-
-    int arr[length];
+    string binNumber = binaryNumber(number);
 
     int trueSum = 0;
     int falseSum = 0;
-    for(int i = 0; binNumber != 0; i++)
+    for(int i = 0; binNumber[i]; i++)
     {
-        arr[i] = binNumber % 10;
-        if(binNumber % 10 == 1)
+        if(binNumber[i] == '1')
             trueSum++;
         else
             falseSum++;
-        binNumber /= 10;
     }
-    cout << "П'ятий бiт числа є " << arr[length-5] << endl;
-    if(arr[length-5] == 1)
+    cout << "П'ятий бiт числа є " << binNumber[4] << endl;
+    if(binNumber[4] == '1')
         cout << "Кiлькiсть одиниць в числi: " << trueSum << endl;
     else
         cout << "Кiлькiсть нулiв в числi: " << falseSum << endl;

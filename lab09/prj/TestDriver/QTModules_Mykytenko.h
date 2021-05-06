@@ -6,7 +6,6 @@
 #include <iostream>
 #include <string.h>
 #include <windows.h>
-#include <iomanip>
 
 using namespace std;
 
@@ -68,21 +67,13 @@ double inputZ()
 {
     double z;
     cout << "Введiть Z: ";
-    cin.clear();
-    fflush(stdin);
     cin >> z;
-    double copyZ = z;
-    while(copyZ < 0)
-    {
-        cout << "Z не може бути меншим нуля." << endl << "Введiть Z: ";
-        cin >> copyZ;
-    }
-    return copyZ;
+    return z;
 }
 
-void saleCost(double cost)
+void saleCost(float cost)
 {
-    double sale;
+    int sale;
     if (cost < 1000)
         sale = 1;
     else
@@ -108,23 +99,14 @@ void saleCost(double cost)
         }
     }
     double saleSum = cost * sale / 100;
-    cout << "Сума до сплати: ";
-    printf("%0.2f", cost - saleSum);
+    cout << "Сума до сплати: " << cost - saleSum;
 }
 double inputCost()
 {
-    double cost;
+    int cost;
     cout << "Введiть суму товару: ";
-    cin.clear();
-    fflush(stdin);
     cin >> cost;
-    double copyCost = cost;
-    while(copyCost < 0)
-    {
-        cout << "Сума товару не може бути меншою за нуль." << endl << "Введiть суму товару: ";
-        cin >> copyCost;
-    }
-    return copyCost;
+    return cost;
 }
 
 void mensUnderwear(int size)
@@ -222,8 +204,8 @@ void bitCalculator()
         else
             falseSum++;
     }
-    cout << "П'ятий бiт числа є " << binNumber[binNumber.length() - 4] << endl;
-    if(binNumber[binNumber.length() - 4] == '1')
+    cout << "П'ятий бiт числа є " << binNumber[4] << endl;
+    if(binNumber[4] == '1')
         cout << "Кiлькiсть одиниць в числi: " << trueSum << endl;
     else
         cout << "Кiлькiсть нулiв в числi: " << falseSum << endl;

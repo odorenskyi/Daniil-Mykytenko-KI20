@@ -18,66 +18,39 @@ void localisation()
 
 void AR()
 {
-    cout << "Daniyl Mykytenko, KI-20 student. CNTU 2021 (c)" << std::endl;
-    Beep(247, 500);
-    Beep(417, 500);
-    Beep(417, 500);
-    Beep(370, 500);
-    Beep(417, 500);
-    Beep(329, 500);
-    Beep(247, 500);
-    Beep(247, 500);
-    Beep(247, 500);
-    Beep(417, 500);
-    Beep(417, 500);
-    Beep(370, 500);
-    Beep(417, 500);
-    Beep(497, 500);
-    Sleep(500);
-    Beep(497, 500);
-    Beep(277, 500);
-    Beep(277, 500);
-    Beep(440, 500);
-    Beep(440, 500);
-    Beep(417, 500);
-    Beep(370, 500);
-    Beep(329, 500);
-    Beep(247, 500);
-    Beep(417, 500);
-    Beep(417, 500);
-    Beep(370, 500);
-    Beep(417, 500);
-    Beep(329, 500);
+    cout << "----- Daniyl Mykytenko, KI-20 student. CNTU 2021 (c) -----" << endl << endl << endl;
 }
 
 void s_calculation(double y, double z)
 {
     double s = pow(z + y + z, 2) - 2 * 3.141592653589793 * sqrt(1 / 3 * z);
-    cout << s;
+    cout << s << endl << endl;
 }
 
-double inputY()
+double intInput()
 {
-    double y;
-    cout << "Введiть Y: ";
-    cin >> y;
-    return y;
-}
-
-double inputZ()
-{
-    double z;
-    cout << "Введiть Z: ";
+    double x;
+    cout << "Введiть число: ";
     cin.clear();
     fflush(stdin);
-    cin >> z;
-    double copyZ = z;
-    while(copyZ < 0)
+    cin >> x;
+    return x;
+}
+
+double posInput()
+{
+    double x;
+    cout << "Введiть число: ";
+    cin.clear();
+    fflush(stdin);
+    cin >> x;
+    double copyx = x;
+    while(copyx < 0)
     {
-        cout << "Z не може бути меншим нуля." << endl << "Введiть Z: ";
-        cin >> copyZ;
+        cout << "Число не може бути меншим нуля." << endl << "Введiть число: ";
+        cin >> copyx;
     }
-    return copyZ;
+    return copyx;
 }
 
 void saleCost(double cost)
@@ -110,7 +83,9 @@ void saleCost(double cost)
     double saleSum = cost * sale / 100;
     cout << "Сума до сплати: ";
     printf("%0.2f", cost - saleSum);
+    cout << endl << endl;
 }
+
 double inputCost()
 {
     double cost;
@@ -150,7 +125,7 @@ void mensUnderwear(int size)
     else
         cout << "В системi Францiї ваш розмiр: " << frSize[index] << endl;
     cout << "В системi Великобританiї ваш розмiр: " << gbSize[index] << endl;
-    cout << "В мiжнароднiй системi ваш розмiр: " << internationalSize[index] << endl;
+    cout << "В мiжнароднiй системi ваш розмiр: " << internationalSize[index] << endl << endl;
 }
 
 int sizeInput()
@@ -178,7 +153,6 @@ string binaryNumber(long long num)
 {
     string concatenance = "";
     int k = 0;
-    long long t=0, d = 1;
     while(num)
     {
         k = num % 2;
@@ -188,19 +162,6 @@ string binaryNumber(long long num)
     return concatenance;
 }
 
-int binaryLength(long long num)
-{
-    long long t=0, d = 1, length = 0;
-    while(num)
-    {
-        t += (num % 2)* d;
-        num = num/2;
-        d = d*10;
-        length++;
-    }
-    return length;
-}
-
 void bitCalculator()
 {
     long long number;
@@ -208,7 +169,7 @@ void bitCalculator()
     cin >> number;
     while(number < 0 || number > 80000)
     {
-        cout << "Помилка: число не належить заданому пром?жку." << endl << "Введiть натуральне число вiд 0 до 80000: " << endl;
+        cout << "Помилка: число не належить заданому промiжку." << endl << "Введiть натуральне число вiд 0 до 80000: " << endl;
         cin >> number;
     }
     string binNumber = binaryNumber(number);
@@ -222,11 +183,16 @@ void bitCalculator()
         else
             falseSum++;
     }
-    cout << "П'ятий бiт числа є " << binNumber[binNumber.length() - 4] << endl;
-    if(binNumber[binNumber.length() - 4] == '1')
-        cout << "Кiлькiсть одиниць в числi: " << trueSum << endl;
+    if(binNumber.length() < 5)
+        cout << "Число на має 5 бiту" << endl << endl;
     else
-        cout << "Кiлькiсть нулiв в числi: " << falseSum << endl;
+    {
+        cout << "П'ятий бiт числа є " << binNumber[binNumber.length() - 4] << endl;
+        if(binNumber[binNumber.length() - 4] == '1')
+            cout << "Кiлькiсть одиниць в числi: " << trueSum << endl << endl;
+        else
+            cout << "Кiлькiсть нулiв в числi: " << falseSum << endl << endl;
+    }
 }
 
 #endif // QTMODULES_MYKYTENKO_H

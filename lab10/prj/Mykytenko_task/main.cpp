@@ -5,7 +5,8 @@
 #include <clocale>
 #include <windows.h>
 #include <codecvt>
-#include <map>
+#include <cctype>
+#include <mftransform.h>
 
 using namespace std;
 
@@ -57,51 +58,30 @@ int main()
         if(!(inputText[i] == L'а' || inputText[i] == L'о' || inputText[i] == L'у' || inputText[i] == L'е' || inputText[i] == L'и' || inputText[i] == L'і'))
             outputText += inputText[i];
     }
+
+
+    wchar_t ua[33] = {L'а',L'б',L'в',L'г',L'ґ',L'д',L'е',L'є',L'ж',L'з',L'и',L'і',L'ї',L'й',L'к',L'л',L'м',L'н',L'о',L'п',L'р',L'с',L'т',L'у',L'ф',L'х',L'ц',L'ч',L'ш',L'щ',L'ю',L'я',L' '};
+    wstring eng[33] = {L"a",L"b",L"v",L"h",L"g",L"d",L"e",L"ie",L"zh",L"z",L"y",L"i",L"i",L"i",L"k",L"l",L"m",L"n",L"o",L"p",L"r",L"s",L"t",L"u",L"f",L"kh",L"ts",L"ch",L"sh",L"shch",L"iu",L"ia",L" "};
+
+    wstring translitedText;
+    wcout << "length is " << length << endl;
+    for(int i = 0; i < length; i++)
+    {
+        if(inputText[i] >= L'А' && inputText[i] <= L'Я')
+            inputText[i] += 32;
+        for(int j = 0; j < 33; j++)
+            if(inputText[i] == ua[j])
+                translitedText += eng[j];
+    }
+
     wstring markerText = L"\nКількість знаків двокрапки - ";
     outputText += markerText;
     outputText += to_wstring(marker);
+    outputText += L"\nТранслітерований текст з файлу: ";
+    outputText += translitedText;
     outputText += author;
     output << outputText;
 
-    map <wstring, wstring> translitor =
-    {
-        {L"а", L"a"},
-        {L"б", L"b"},
-        {L"в", L"v"},
-        {L"г", L"h"},
-        {L"ґ", L"g"},
-        {L"д", L"d"},
-        {L"е", L"e"},
-        {L"є", L"ie"},
-        {L"ж", L"zh"},
-        {L"з", L"z"},
-        {L"и", L"y"},
-        {L"і", L"i"},
-        {L"ї", L"i"},
-        {L"й", L"i"},
-        {L"к", L"k"},
-        {L"л", L"l"},
-        {L"м", L"m"},
-        {L"н", L"n"},
-        {L"о", L"o"},
-        {L"п", L"p"},
-        {L"р", L"r"},
-        {L"с", L"s"},
-        {L"т", L"t"},
-        {L"у", L"u"},
-        {L"ф", L"f"},
-        {L"х", L"kh"},
-        {L"ц", L"ts"},
-        {L"ч", L"ch"},
-        {L"ш", L"sh"},
-        {L"щ", L"shch"},
-        {L"ю", L"iu"},
-        {L"я", L"ia"}
-    };
 
-    wstring translitedText;
-    for(int i = 0; input.good(); i++)
-    {
-        translitedText += translitor[inputText[i]];
-    }
+
 }

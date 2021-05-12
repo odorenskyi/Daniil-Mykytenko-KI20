@@ -53,7 +53,7 @@ OBJECTS_DIR   = debug
 SOURCES       = ..\Mykytenko_task\main.cpp 
 OBJECTS       = debug/main.o
 
-DIST          =   ..\Mykytenko_task\main.cpp
+DIST          =  wModule.h ..\Mykytenko_task\main.cpp
 QMAKE_TARGET  = Mykytenko_task
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = Mykytenko_task.exe
@@ -101,7 +101,7 @@ compiler_clean:
 
 ####### Compile
 
-debug/main.o: ../Mykytenko_task/main.cpp 
+debug/main.o: ../Mykytenko_task/main.cpp ../Mykytenko_task/wModule.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Mykytenko_task\main.cpp
 
 ####### Install

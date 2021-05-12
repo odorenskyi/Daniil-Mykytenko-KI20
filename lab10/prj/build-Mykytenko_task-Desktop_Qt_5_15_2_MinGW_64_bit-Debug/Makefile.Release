@@ -53,7 +53,7 @@ OBJECTS_DIR   = release
 SOURCES       = ..\Mykytenko_task\main.cpp 
 OBJECTS       = release/main.o
 
-DIST          =   ..\Mykytenko_task\main.cpp
+DIST          =  wModule.h ..\Mykytenko_task\main.cpp
 QMAKE_TARGET  = Mykytenko_task
 DESTDIR        = release\ #avoid trailing-slash linebreak
 TARGET         = Mykytenko_task.exe
@@ -101,7 +101,7 @@ compiler_clean:
 
 ####### Compile
 
-release/main.o: ../Mykytenko_task/main.cpp 
+release/main.o: ../Mykytenko_task/main.cpp ../Mykytenko_task/wModule.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Mykytenko_task\main.cpp
 
 ####### Install

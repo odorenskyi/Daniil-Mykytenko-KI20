@@ -14,7 +14,7 @@ using namespace std;
 int main()
 {
     wlocale();
-
+    wcout << L"Якщо ви запускаєте застосунок вперше - створіть у теці с проєктом текстовий файл \"input.txt\", запишіть туди інформацію й після цього запустіть застосунок." << endl;
 
     wifstream startInput;
     startInput.imbue(locale(locale(), new codecvt_utf8_utf16<wchar_t>));

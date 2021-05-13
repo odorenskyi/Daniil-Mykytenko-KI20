@@ -82,9 +82,8 @@ wstring inputGetter()
     return inputText;
 }
 
-int markerGetter()
+int markerGetter(wstring inputText)
 {
-    wstring inputText = inputGetter();
     int length = inputText.length();
     int marker = 0;
     for(int i = 0; i < length; i++)

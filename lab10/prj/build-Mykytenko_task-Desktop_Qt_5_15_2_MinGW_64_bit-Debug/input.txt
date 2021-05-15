@@ -1,20 +1,8 @@
-дозапис реалізовано::::
+дозапис реалізовано:::::::
 
 
 Транслітерований текст: dozapys realizovano
-
-
-
-Транслітерований текст: dozapys realizovanotransliterovanyi tekst  
 Результат функції s_calculation: 16
 Число b в двійковому коді дорівнює: 11
 
-Sat May 15 11:53:14 2021
-
-
-
-Транслітерований текст: dozapys realizovanotransliterovanyi tekst  transliterovanyi tekst     rezultat funktsii  chyslo  v dviikovomu kodi dorivniuie     
-Результат функції s_calculation: 16
-Число b в двійковому коді дорівнює: 11
-
-Sat May 15 11:53:38 2021
+Sun May 16 00:57:22 2021

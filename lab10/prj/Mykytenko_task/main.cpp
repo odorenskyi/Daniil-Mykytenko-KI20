@@ -22,6 +22,7 @@ int main()
     wstring inputText = inputGetter();
     startInput.close();
 
+    wstring outputText = outputGetter();
 
     wofstream input;
     wofstream output;
@@ -44,7 +45,7 @@ int main()
         return 0;
     }
 
-    output << wAR() << endl << endl << L"Текст з input.txt - " << inputText << L"Кількість знаків двокрапки - " << markerGetter(inputText) << endl << timeConverter();
+    output << wAR() << endl << endl << L"Текст з input.txt - " << inputText << L"Кількість знаків двокрапки - " << markerGetter(inputText) << endl << L"Речення без голосних: " << outputText << endl << timeConverter();
     input << inputText << endl << L"\nТранслітерований текст: " << translitor()<< endl << L"Результат функції s_calculation: " << s_calculation(intInput(L'x'), intInput(L'y')) << endl << binaryNumber(posInput(L'b')) << endl << endl << timeConverter();
 
 }
